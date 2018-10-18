@@ -6,3 +6,4 @@
 target/
 tmp
 local.properties
+nb-configuration.xml
