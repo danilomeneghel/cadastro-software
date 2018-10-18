@@ -8,7 +8,6 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 - ORM
 - EJB (Beans)
 - DataTables
-- Sort Column
 
 ## Requisitos
 
@@ -24,7 +23,8 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 - JPA
 - JSF
 - Maven
-- CSS
+- Jetty
+- CSS e SCSS
 - JS
 - PrimeFaces
 - PostgreSQL
@@ -51,13 +51,25 @@ $ pg_restore -U <username> -d cadastro_software -1 cadastro_software.sql
 
 ```
 
-Após você finalizar a configuração, basta abrir o NetBeans e rodar o projeto e abrir em seu navegador.<br>
-http://localhost:8080/cadastro-software/
+Após você finalizar a configuração, abra o prompt de comando (cmd) e digite: <br>
+
+```
+mvn jetty:run
+```
+
+Depois abra no seu navegador o seguinte endereço:<br>
+
+http://localhost:8080/cadastro-software/index.jsf
 
 ## Repositório Maven
 
-Search dependences Maven. <br>
+Localizar dependências do Maven. <br>
 https://mvnrepository.com/
+
+## Demonstração 
+
+Para ver o sistema rodando, basta acessar o link abaixo: <br>
+https://cadastro-software.herokuapp.com/
 
 ## Licença
 
