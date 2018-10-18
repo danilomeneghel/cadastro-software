@@ -57,7 +57,7 @@ Após você finalizar a configuração, abra o prompt de comando (cmd) e digite:
 mvn jetty:run
 ```
 
-Depois abra no seu navegador o seguinte endereço:<br>
+Depois abra no seu navegador com o seguinte endereço:<br>
 
 http://localhost:8080/cadastro-software/index.jsf
 
