@@ -1,0 +1,197 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+
+body {
+    .ui-tabs {
+        padding: 0;
+        position: static;
+        
+        .ui-tabs-nav {
+            margin: 0;
+            padding: 0;
+            border: $tabsNavBorder;
+            background-color: $tabsNavBgColor;
+
+            .ui-tabs-header {
+                list-style: none;
+                position: static;
+                margin: 0 $tabsHeaderSpacing 0 0;
+                padding: 0;
+                white-space: nowrap;
+                display: inline-block;
+                vertical-align: top;
+                float: none;
+                padding: 0;
+                border: $panelHeaderBorder;
+                background-color: $panelHeaderBgColor;
+                font-weight: $panelHeaderFontWeight;
+                top: 0;
+                @include transition($panelHeaderTransition);
+
+                a {
+                    color: $panelHeaderTextColor;
+                    padding: $panelHeaderPadding;
+                    display: block;
+                }
+
+                .ui-icon {
+                    color: $panelHeaderIconColor;
+                    position: relative;
+                    top: $iconHeight / 2;
+                    right: $iconWidth / 2;
+
+                    &.ui-icon-close {
+                        margin: 0;
+                        float: none;
+                        @include icon_override("\f00d");
+                    }
+                }
+
+                &.ui-state-hover, &.ui-tabs-outline {
+                    outline: 0 none;
+                    background-color: $panelHeaderHoverBgColor;
+                    border: $panelHeaderHoverBorder;
+
+                    a {
+                        color: $panelHeaderHoverTextColor;
+                    }
+
+                    .ui-icon {
+                        color: $panelHeaderHoverIconColor;
+                    }
+                }
+
+                &.ui-state-active {
+                    background-color: $panelHeaderActiveBgColor;
+                    border: $panelHeaderActiveBorder;
+
+                    a {
+                        color: $panelHeaderActiveTextColor;
+                    }
+
+                    .ui-icon {
+                        color: $panelHeaderActiveIconColor;
+                    }
+                }
+            }
+        }
+
+        .ui-tabs-panels {
+            border: $panelContentBorder;
+            background-color: $panelContentBgColor;
+            color: $panelContentTextColor;
+            padding: 0;
+            margin: 0;
+            position: static;
+
+            .ui-tabs-panel {
+                padding: $panelContentPadding;
+                line-height: $panelContentLineHeight;
+            }
+        }
+
+        .ui-tabs-navscroller {
+            position: relative;
+
+            .ui-tabs-navscroller-btn {
+                border: $panelHeaderBorder;
+                background-color: $panelHeaderBgColor;
+                color: $panelHeaderIconColor;
+                outline: 0 none;
+                z-index: 1;
+                @include transition($panelHeaderTransition);
+
+                .ui-icon {
+                    margin-top: $iconHeight / 2;
+                }
+
+                &.ui-tabs-navscroller-btn-left {
+                    left: 0;
+                    height: 100%;
+
+                    .ui-icon {
+                        @include icon_override("\f053");
+                    }
+                }
+    
+                &.ui-tabs-navscroller-btn-right {
+                    right: 0;
+                    height: 100%;
+
+                    .ui-icon {
+                        @include icon_override("\f054");
+                    }
+                }
+
+                &.ui-state-hover, &.ui-state-focus {
+                    border: $panelHeaderHoverBorder;
+                    background-color: $panelHeaderHoverBgColor;
+                    color: $panelHeaderHoverIconColor;
+                }
+
+                &.ui-state-active {
+                    border: $panelHeaderActiveBorder;
+                    background-color: $panelHeaderActiveBgColor;
+                    color: $panelHeaderActiveIconColor;
+                }
+            }
+
+            .ui-tabs-nav {
+                border-left: 0 none;
+                border-right: 0 none;
+            }
+        }
+
+        &.ui-tabs-top {
+            .ui-tabs-nav {
+                margin: 0;
+                padding: 0;
+
+                .ui-tabs-header {
+                    border-bottom: 0 none;
+                }
+            }
+        }
+
+        &.ui-tabs-bottom {
+            .ui-tabs-nav {
+                margin: 0;
+                padding: 0;
+
+                .ui-tabs-header {
+                    border-top: 0 none;
+                }
+            }
+        }
+
+        &.ui-tabs-left, &.ui-tabs-right {
+            .ui-tabs-nav {
+                width: 25%;
+                margin: 0;
+                padding: 0;
+                height: auto;
+
+                .ui-tabs-header {
+                    width: 100%;
+                    margin: 0;
+                    border-right: 0 none;
+                }
+            }
+
+            .ui-tabs-panels {
+                width: 75%;
+            }
+        }
+
+        &.ui-tabs-right {
+            .ui-tabs-nav {
+                border-left: 0 none;
+            }
+        }
+
+        &.ui-tabs-left {
+            .ui-tabs-nav {
+                border-right: 0 none;
+            }
+        }
+    }
+}

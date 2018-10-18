@@ -1,0 +1,50 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+
+body {
+    .ui-breadcrumb {
+        background-color: $panelContentBgColor;
+        border: $panelContentBorder;
+        padding: $panelContentPadding;
+        
+        ul {
+            li {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                
+                .ui-menuitem-link {
+                    color: $textColor;
+                    margin: 0;
+                    float: none;
+                    padding: $menuitemPadding;
+
+                    &:focus {
+                        background-color: $menuitemHoverBgColor;
+                        outline: 0 none;
+                    }
+                }
+                
+                &.ui-breadcrumb-chevron {
+                    @include icon_override("\f105");
+                    font-size: $fontSize + 2;
+                    margin: 0 $inlineSpacing 0 $inlineSpacing;
+                    color: $textSecondaryColor;
+                }
+                
+                &:first-child {                    
+                    a.ui-icon-home {
+                        @include icon_override("\f015");
+                        color: $textSecondaryColor;
+                        margin: 0;
+                        font-size: $fontSize + 4;
+                        vertical-align: top;
+                        
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+
+    <h:form>
+        <p:messages autoUpdate="true"></p:messages>
+        <h1>Lista de Usuários</h1>
+        <p:commandButton value="Novo" icon="fa fa-plus" styleClass="success-btn" actionListener="#{usuarioBean.novo()}" update="@form"></p:commandButton>
+        <p:commandButton value="Listar" icon="fa fa-list" actionListener="#{usuarioBean.mudarParaLista()}" update="@form"></p:commandButton>
+        <br/><br/>
+        <p:fieldset>
+            <p:panelGrid columns="2" rendered="#{usuarioBean.lista == false}">
+                <h:outputLabel value="Nome"></h:outputLabel>
+                <p:inputText value="#{usuarioBean.entidade.nome}"></p:inputText>
+                <h:outputLabel value="Usuário"></h:outputLabel>
+                <p:inputText value="#{usuarioBean.entidade.usuario}"></p:inputText>
+                <h:outputLabel value="Senha"></h:outputLabel>
+                <p:password value="#{usuarioBean.entidade.senha}"></p:password>
+                <p:commandButton value="Salvar" icon="fa fa-hdd-o" styleClass="success-btn" actionListener="#{usuarioBean.salvar()}" disabled="#{usuarioBean.lista == true}" update="@form"></p:commandButton>
+            </p:panelGrid>
+            <p:dataTable value="#{usuarioBean.listar()}" var="u" rendered="#{usuarioBean.lista == true}">
+                <p:column headerText="Nome" sortBy="#{u.nome}">
+                    <h:outputText value="#{u.nome}"></h:outputText>
+                </p:column>
+                <p:column headerText="Usuário" sortBy="#{u.usuario}">
+                    <h:outputText value="#{u.usuario}"></h:outputText>
+                </p:column>
+                <p:column headerText="Senha">
+                    <h:outputText value="*****"></h:outputText>
+                </p:column>
+                <p:column headerText="Ações" style="text-align: center">
+                    <p:commandButton value="Editar" icon="fa fa-edit" actionListener="#{usuarioBean.editar(u)}" update="@form"></p:commandButton>
+                    <p:commandButton value="Excluir" icon="fa fa-trash" styleClass="danger-btn" onclick="return confirm('Deseja mesmo excluir esse item?')" actionListener="#{usuarioBean.excluir(u)}" update="@form"></p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </h:form>
+</ui:decorate>

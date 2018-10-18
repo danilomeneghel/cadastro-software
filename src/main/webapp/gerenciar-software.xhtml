@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+
+    <h:form>
+        <p:messages autoUpdate="true"></p:messages>
+        <h1>Lista de Softwares</h1>
+        <p:commandButton value="Novo" icon="fa fa-plus" styleClass="success-btn" actionListener="#{softwareBean.novo()}" update="@form"></p:commandButton>
+        <p:commandButton value="Listar" icon="fa fa-list" actionListener="#{softwareBean.mudarParaLista()}" update="@form"></p:commandButton>
+        <br/><br/>
+        <p:fieldset>
+            <p:panelGrid columns="2" rendered="#{softwareBean.lista == false}">
+                <h:outputLabel value="Nome"></h:outputLabel>
+                <p:inputText value="#{softwareBean.entidade.nome}"></p:inputText>
+                <h:outputLabel value="Fabricante"></h:outputLabel>
+                <p:inputText value="#{softwareBean.entidade.fabricante}"></p:inputText>
+                <h:outputLabel value="Tipo"></h:outputLabel>
+                <p:inputText value="#{softwareBean.entidade.tipo}"></p:inputText>
+                <h:outputLabel value="Data Cadastro"></h:outputLabel>
+                <p:calendar value="#{softwareBean.entidade.data_cadastro}" ></p:calendar>
+                <p:commandButton value="Salvar" icon="fa fa-hdd-o" styleClass="success-btn" actionListener="#{softwareBean.salvar()}" disabled="#{softwareBean.lista == true}" update="@form"></p:commandButton>
+            </p:panelGrid>
+            <p:dataTable value="#{softwareBean.listar()}" var="s" rendered="#{softwareBean.lista == true}">
+                <p:column headerText="Nome" sortBy="#{s.nome}">
+                    <h:outputText value="#{s.nome}"></h:outputText>
+                </p:column>
+                <p:column headerText="Fabricante" sortBy="#{s.fabricante}">
+                    <h:outputText value="#{s.fabricante}"></h:outputText>
+                </p:column>
+                <p:column headerText="Tipo" sortBy="#{s.tipo}">
+                    <h:outputText value="#{s.tipo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Data Cadastro" sortBy="#{s.data_cadastro}">
+                    <h:outputText value="#{s.data_cadastro}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Ações" style="text-align: center">
+                    <p:commandButton value="Editar" icon="fa fa-edit" actionListener="#{softwareBean.editar(s)}" update="@form"></p:commandButton>
+                    <p:commandButton value="Excluir" icon="fa fa-trash" styleClass="danger-btn" onclick="return confirm('Deseja mesmo excluir esse item?')" actionListener="#{softwareBean.excluir(s)}" update="@form"></p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </h:form>
+</ui:decorate>

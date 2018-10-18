@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Sistema de Cadastro de Softwares</title>
+        <ui:insert name="head" />
+        <h:outputStylesheet name="layout/style/layout.css"  />
+    </h:head>
+    <h:body>
+        <div class="layout-wrapper">
+            <div class="layout-topbar">
+                <div class="layout-topbar-content">
+                    <h:form>
+                        <p:menubar>
+                            <p:menuitem value="Home" url="index.jsf"></p:menuitem>
+                            <p:menuitem value="Softwares" url="gerenciar-software.jsf"></p:menuitem>
+                            <p:menuitem value="Usuários" url="gerenciar-usuario.jsf"></p:menuitem>
+                        </p:menubar>
+                    </h:form>
+                </div>
+            </div>
+            <div class="layout-content">
+                <ui:insert></ui:insert> 
+            </div>
+        </div>
+    </h:body>
+</html>

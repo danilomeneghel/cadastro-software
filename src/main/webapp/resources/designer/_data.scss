@@ -1,0 +1,130 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+
+body {
+    .ui-picklist {
+        .ui-picklist-buttons {
+            padding: 0 $inlineSpacing 0 $inlineSpacing;
+
+            .ui-button {
+                font-size: $fontSize + 2;
+                margin-bottom: $inlineSpacing;
+            }            
+            
+            .ui-icon-arrow-1-n {
+                @include icon-override("\f106");
+            }
+            
+            .ui-icon-arrowstop-1-n {
+                @include icon-override("\f102");
+            }
+            
+            .ui-icon-arrow-1-s {
+                @include icon-override("\f107");
+            }
+            
+            .ui-icon-arrowstop-1-s {
+                @include icon-override("\f103");
+            }
+            
+            .ui-icon-arrow-1-e {
+                @include icon-override("\f105");
+            }
+            
+            .ui-icon-arrowstop-1-e {
+                @include icon-override("\f101");
+            }
+            
+            .ui-icon-arrow-1-w {
+                @include icon-override("\f104");
+            }
+            
+            .ui-icon-arrowstop-1-w {
+                @include icon-override("\f100");
+            }
+        }
+        
+        .ui-picklist-caption {
+            background-color: $panelHeaderBgColor;
+            border: $panelHeaderBorder;
+            color: $panelHeaderTextColor;
+            padding: $panelHeaderPadding;
+            border-bottom: 0 none;
+            font-weight: $panelHeaderFontWeight;
+        }
+        
+        .ui-picklist-filter-container {
+            .ui-picklist-filter {
+                padding: $inputPadding;
+                width: 100%;
+                padding-left: $inputPadding * 2 + $iconWidth;
+                margin-bottom: $inlineSpacing;
+            }
+            
+            .ui-icon {
+                @include icon_override("\f002");
+                position: absolute;
+                left: $inputPadding;
+                top: 50%;
+                margin-top: -1 * $iconHeight / 2 - $inlineSpacing / 2;
+                color: $inputListHeaderSearchIconColor;
+            }
+        }
+        
+        .ui-picklist-list {
+            border: $panelContentBorder;
+            background-color: $panelContentBgColor;
+            color: $panelContentTextColor;
+            padding: $inputListPadding;
+
+            .ui-picklist-item {
+                padding: $inputListItemPadding;
+                border: $inputListItemBorder;
+                margin: $inputListItemMargin;
+                color: $inputListItemTextColor;
+                @include border-radius($inputListItemBorderRadius);
+                
+                &.ui-state-hover {
+                    background-color: $inputListItemHoverBgColor;
+                    color: $inputListItemHoverTextColor;
+                }
+
+                &.ui-state-highlight {
+                    background-color: $inputListItemHighlightBgColor;
+                    color: $inputListItemHighlightTextColor;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .ui-picklist {
+            .ui-picklist-buttons {
+                .ui-button {
+                    margin-top: $inlineSpacing;
+                    margin-right: $inlineSpacing;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    .ui-icon-arrow-1-e {
+                        @include icon-override("\f107");
+                    }
+                    
+                    .ui-icon-arrowstop-1-e {
+                        @include icon-override("\f103");
+                    }
+                    
+                    .ui-icon-arrow-1-w {
+                        @include icon-override("\f106");
+                    }
+                    
+                    .ui-icon-arrowstop-1-w {
+                        @include icon-override("\f102");
+                    }
+                }
+                
+            }
+        }
+    }
+}
