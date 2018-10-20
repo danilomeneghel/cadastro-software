@@ -16,13 +16,13 @@
         <p:fieldset>
             <p:panelGrid columns="2" rendered="#{softwareBean.lista == false}">
                 <h:outputLabel value="Nome"></h:outputLabel>
-                <p:inputText id="nome" value="#{softwareBean.entidade.nome}"></p:inputText>
+                <p:inputText value="#{softwareBean.entidade.nome}"></p:inputText>
                 <h:outputLabel value="Desenvolvedor"></h:outputLabel>
-                <p:inputText id="desenvolvedor" value="#{softwareBean.entidade.desenvolvedor}"></p:inputText>
+                <p:inputText value="#{softwareBean.entidade.desenvolvedor}"></p:inputText>
                 <h:outputLabel value="Tipo"></h:outputLabel>
-                <p:inputText id="tipo" value="#{softwareBean.entidade.tipo}"></p:inputText>
+                <p:inputText value="#{softwareBean.entidade.tipo}"></p:inputText>
                 <h:outputLabel value="Data Cadastro"></h:outputLabel>
-                <p:calendar id="data_cadastro" value="#{softwareBean.entidade.data_cadastro}" ></p:calendar>
+                <p:calendar value="#{softwareBean.entidade.data_cadastro}" ></p:calendar>
                 <p:commandButton value="Salvar" icon="fa fa-hdd-o" styleClass="success-btn" action="#{softwareBean.salvar()}" disabled="#{softwareBean.lista == true}" update="@form"></p:commandButton>
             </p:panelGrid>
             <p:dataTable value="#{softwareBean.listar()}" var="s" rendered="#{softwareBean.lista == true}">

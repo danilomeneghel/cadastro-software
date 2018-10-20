@@ -24,10 +24,10 @@
                     <h2>Login</h2>
                     <p:panelGrid columns="2" style="margin: 0px auto">
                         <h:outputLabel for="email" value="Email" />
-                        <p:inputText value="#{usuarioBean.usuario.email}" />
+                        <p:inputText value="#{usuarioBean.usuario.email}" required="true" label="Email" />
                         <h:outputLabel for="senha" value="Senha" />
-                        <p:password value="#{usuarioBean.usuario.senha}" />
-                        <p:commandButton value="Enviar" icon="fa fa-key" styleClass="success-btn" action="#{usuarioBean.login()}" ajax="false" update="@form">
+                        <p:password value="#{usuarioBean.usuario.senha}" required="true" label="Senha" />
+                        <p:commandButton value="Login" styleClass="success-btn" action="#{usuarioBean.login()}" ajax="false" update="@form">
                         </p:commandButton>
                     </p:panelGrid>
                     <p:messages autoUpdate="true"></p:messages>

@@ -69,21 +69,21 @@ public class UsuarioDAO implements CrudDAO<Usuario> {
         }
     }
 
-    public boolean login(String email, String senha) throws ErroSistema {
+    public Integer login(String email, String senha) throws ErroSistema {
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps = conexao.prepareStatement("SELECT email, senha FROM usuario WHERE email = ? AND senha = ? AND ativo = 1");
+            PreparedStatement ps = conexao.prepareStatement("SELECT email, senha, ativo FROM usuario WHERE email = ? AND senha = ?");
             ps.setString(1, email);
             ps.setString(2, senha);
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                return true;
-            }
+                return resultSet.getInt("ativo");
+            } 
         } catch (SQLException ex) {
-            throw new ErroSistema("Erro localizar usuário!", ex);
+            throw new ErroSistema("Erro ao localizar usuário!", ex);
         }
-        return false;
+        return -1;
     }
 
 }

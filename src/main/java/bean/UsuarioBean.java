@@ -5,10 +5,11 @@ import dao.UsuarioDAO;
 import entidade.Usuario;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> {
 
     private UsuarioDAO usuarioDAO;
@@ -36,13 +37,31 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> {
     }
 
     public String login() throws ErroSistema {
-        boolean valida = getDao().login(usuario.getEmail(), usuario.getSenha());
-        if (valida) {
-            return "index";
-        } else {
-            adicionarMensagem("Usuário ou senha inválido!", FacesMessage.SEVERITY_INFO);
-            return null;
+        Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
+        switch (valida) {
+            case 1:
+                HttpSession session = SessionBean.getSession();
+                session.setAttribute("email", usuario.getEmail());
+                session.setAttribute("nome", usuario.getNome());
+                return "index";
+            case 0:
+                adicionarMensagem("Usuário inativo!", FacesMessage.SEVERITY_INFO);
+                return null;
+            default:
+                adicionarMensagem("Usuário ou senha inválido!", FacesMessage.SEVERITY_INFO);
+                return null;
         }
     }
 
+    public String getNomeUsuario() {
+        HttpSession session = SessionBean.getSession();
+        String nome = (String) session.getAttribute("nome");
+        return nome;
+    }
+
+    public String logout() {
+        HttpSession session = SessionBean.getSession();
+        session.invalidate();
+        return "/";
+    }
 }
