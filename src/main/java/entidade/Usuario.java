@@ -6,8 +6,9 @@ public class Usuario {
 
     private Integer id;
     private String nome;
-    private String usuario;
+    private String email;
     private String senha;
+    private Integer ativo = 1;
 
     public Integer getId() {
         return id;
@@ -25,12 +26,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -39,6 +40,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Integer getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Integer ativo) {
+        this.ativo = ativo;
     }
 
     @Override

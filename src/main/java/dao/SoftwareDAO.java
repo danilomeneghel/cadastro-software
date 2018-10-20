@@ -19,13 +19,13 @@ public class SoftwareDAO implements CrudDAO<Software>{
             Connection conexao = ConexaoDB.getConexao();
             PreparedStatement ps;
             if(software.getId() == null){
-                ps = conexao.prepareStatement("INSERT INTO software (nome, fabricante, tipo, data_cadastro) VALUES (?,?,?,?)");
+                ps = conexao.prepareStatement("INSERT INTO software (nome, desenvolvedor, tipo, data_cadastro) VALUES (?,?,?,?)");
             } else {
-                ps = conexao.prepareStatement("UPDATE software SET nome=?, fabricante=?, tipo=?, data_cadastro=? WHERE id=?");
+                ps = conexao.prepareStatement("UPDATE software SET nome=?, desenvolvedor=?, tipo=?, data_cadastro=? WHERE id=?");
                 ps.setInt(5, software.getId());
             }
             ps.setString(1, software.getNome());
-            ps.setString(2, software.getFabricante());
+            ps.setString(2, software.getDesenvolvedor());
             ps.setString(3, software.getTipo());
             ps.setDate(4, new Date(software.getData_cadastro().getTime()));
             ps.execute();
@@ -39,7 +39,7 @@ public class SoftwareDAO implements CrudDAO<Software>{
     public void excluir(Software software) throws ErroSistema{
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps  = conexao.prepareStatement("delete from software where id = ?");
+            PreparedStatement ps  = conexao.prepareStatement("DELETE FROM software WHERE id = ?");
             ps.setInt(1, software.getId());
             ps.execute();
         } catch (SQLException ex) {
@@ -51,14 +51,14 @@ public class SoftwareDAO implements CrudDAO<Software>{
     public List<Software> listar() throws ErroSistema{
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps = conexao.prepareStatement("select * from software");
+            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM software");
             ResultSet resultSet = ps.executeQuery();
             List<Software> softwares = new ArrayList<>();
             while(resultSet.next()){
                 Software software = new Software();
                 software.setId(resultSet.getInt("id"));
                 software.setNome(resultSet.getString("nome"));
-                software.setFabricante(resultSet.getString("fabricante"));
+                software.setDesenvolvedor(resultSet.getString("desenvolvedor"));
                 software.setTipo(resultSet.getString("tipo"));
                 software.setData_cadastro(resultSet.getDate("data_cadastro"));
                 softwares.add(software);

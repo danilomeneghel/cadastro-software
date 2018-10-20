@@ -7,7 +7,7 @@ public class Software {
 
     private Integer id;
     private String nome;
-    private String fabricante;
+    private String desenvolvedor;
     private String tipo;
     private Date data_cadastro;
 
@@ -27,12 +27,12 @@ public class Software {
         this.nome = nome;
     }
 
-    public String getFabricante() {
-        return fabricante;
+    public String getDesenvolvedor() {
+        return desenvolvedor;
     }
 
-    public void setFabricante(String fabricante) {
-        this.fabricante = fabricante;
+    public void setDesenvolvedor(String desenvolvedor) {
+        this.desenvolvedor = desenvolvedor;
     }
 
     public String getTipo() {

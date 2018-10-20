@@ -12,9 +12,9 @@ public abstract class CrudBean<E, D extends CrudDAO> {
 
     private String estadoTela = "listar";
 
-    private E entidade;
-    private List<E> entidades;
-
+    public E entidade;
+    public List<E> entidades;
+    
     public void novo() {
         entidade = criarNovaEntidade();
         mudarParaInseri();

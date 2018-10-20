@@ -17,8 +17,8 @@
             <p:panelGrid columns="2" rendered="#{softwareBean.lista == false}">
                 <h:outputLabel value="Nome"></h:outputLabel>
                 <p:inputText value="#{softwareBean.entidade.nome}"></p:inputText>
-                <h:outputLabel value="Fabricante"></h:outputLabel>
-                <p:inputText value="#{softwareBean.entidade.fabricante}"></p:inputText>
+                <h:outputLabel value="Desenvolvedor"></h:outputLabel>
+                <p:inputText value="#{softwareBean.entidade.desenvolvedor}"></p:inputText>
                 <h:outputLabel value="Tipo"></h:outputLabel>
                 <p:inputText value="#{softwareBean.entidade.tipo}"></p:inputText>
                 <h:outputLabel value="Data Cadastro"></h:outputLabel>
@@ -29,8 +29,8 @@
                 <p:column headerText="Nome" sortBy="#{s.nome}">
                     <h:outputText value="#{s.nome}"></h:outputText>
                 </p:column>
-                <p:column headerText="Fabricante" sortBy="#{s.fabricante}">
-                    <h:outputText value="#{s.fabricante}"></h:outputText>
+                <p:column headerText="Desenvolvedor" sortBy="#{s.desenvolvedor}">
+                    <h:outputText value="#{s.desenvolvedor}"></h:outputText>
                 </p:column>
                 <p:column headerText="Tipo" sortBy="#{s.tipo}">
                     <h:outputText value="#{s.tipo}"></h:outputText>

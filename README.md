@@ -5,9 +5,9 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 ## Características
 
 - CRUD
-- ORM
-- EJB (Beans)
+- Bean
 - DataTables
+- Login
 
 ## Requisitos
 

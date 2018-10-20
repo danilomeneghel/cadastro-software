@@ -11,7 +11,6 @@ public class SoftwareBean extends CrudBean<Software, SoftwareDAO> {
 
     private SoftwareDAO softwareDAO;
     
-    @Override
     public SoftwareDAO getDao() {
         if(softwareDAO == null){
             softwareDAO = new SoftwareDAO();
@@ -19,7 +18,6 @@ public class SoftwareBean extends CrudBean<Software, SoftwareDAO> {
         return softwareDAO;
     }
 
-    @Override
     public Software criarNovaEntidade() {
         return new Software();
     }
