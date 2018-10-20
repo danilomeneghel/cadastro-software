@@ -16,17 +16,17 @@
         <p:fieldset>
             <p:panelGrid columns="2" rendered="#{usuarioBean.lista == false}">
                 <h:outputLabel value="Nome"></h:outputLabel>
-                <p:inputText value="#{usuarioBean.entidade.nome}"></p:inputText>
+                <p:inputText id="nome" value="#{usuarioBean.entidade.nome}"></p:inputText>
                 <h:outputLabel value="Email"></h:outputLabel>
-                <p:inputText value="#{usuarioBean.entidade.email}"></p:inputText>
+                <p:inputText id="email" value="#{usuarioBean.entidade.email}"></p:inputText>
                 <h:outputLabel value="Senha"></h:outputLabel>
-                <p:password value="#{usuarioBean.entidade.senha}"></p:password>
+                <p:password id="senha" value="#{usuarioBean.entidade.senha}"></p:password>
                 <h:outputLabel value="Ativo"></h:outputLabel>
-                <p:selectOneRadio value="#{usuarioBean.entidade.ativo}">
+                <p:selectOneRadio id="ativo" value="#{usuarioBean.entidade.ativo}">
                     <f:selectItem itemLabel="Ativo" itemValue="1" />
                     <f:selectItem itemLabel="Inativo" itemValue="0" />
                 </p:selectOneRadio>
-                <p:commandButton value="Salvar" icon="fa fa-hdd-o" styleClass="success-btn" actionListener="#{usuarioBean.salvar()}" disabled="#{usuarioBean.lista == true}" update="@form"></p:commandButton>
+                <p:commandButton value="Salvar" icon="fa fa-hdd-o" styleClass="success-btn" action="#{usuarioBean.salvar()}" disabled="#{usuarioBean.lista == true}" update="@form"></p:commandButton>
             </p:panelGrid>
             <p:dataTable value="#{usuarioBean.listar()}" var="u" rendered="#{usuarioBean.lista == true}">
                 <p:column headerText="Nome" sortBy="#{u.nome}">
