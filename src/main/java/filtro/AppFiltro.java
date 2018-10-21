@@ -32,9 +32,9 @@ public class AppFiltro implements Filter {
             HttpServletResponse res = (HttpServletResponse) response;
             HttpSession ses = (HttpSession) req.getSession();
 
-            Usuario usuario = null;
+            String usuario = null;
             if (ses != null) {
-                usuario = (Usuario) ses.getAttribute("email");
+                usuario = (String) ses.getAttribute("email");
             }
 
             if (usuario == null) {
