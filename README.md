@@ -59,7 +59,7 @@ mvn jetty:run
 
 Depois abra no seu navegador com o seguinte endereço:<br>
 
-http://localhost:8080/cadastro-software/index.jsf
+http://localhost:8080/cadastro-software/app/index.jsf
 
 ## Repositório Maven
 
