@@ -42,14 +42,14 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
         this.usuario = usuario;
     }
 
-    public String login() throws ErroSistema {
+    public String doLogin() throws ErroSistema {
         Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
         switch (valida) {
             case 1:
-                HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-                session.setAttribute("email", usuario.getEmail());
+                HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+                session.setAttribute("usuario", usuario);
 
-                System.out.println("Email " + session.getAttribute("email"));
+                System.out.println("Usuario " + session.getAttribute("usuario"));
 
                 return "/app/index?faces-redirect=true";
             case 0:
@@ -62,16 +62,14 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
     }
 
     public Usuario getUsuarioLogado() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        Usuario usuarioLogado = (Usuario) session.getAttribute("email");
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        System.out.println("Return usuario Logado " + session.getAttribute("usuario"));
         
-        System.out.println("Return usuario Logado " + usuarioLogado);
-        
-        return usuarioLogado;
+        return (Usuario) session.getAttribute("usuario");        
     }
 
-    public String logout() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+    public String doLogout() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.invalidate();
         return "/login/login.jsf";
     }

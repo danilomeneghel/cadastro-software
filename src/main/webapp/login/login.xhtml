@@ -27,7 +27,7 @@
                         <p:inputText id="email" value="#{usuarioBean.usuario.email}" required="true" label="Email" />
                         <h:outputLabel for="senha" value="Senha" />
                         <p:password id="senha" value="#{usuarioBean.usuario.senha}" required="true" label="Senha" />
-                        <p:commandButton value="Login" styleClass="success-btn" action="#{usuarioBean.login()}" ajax="false" update="@form">
+                        <p:commandButton value="Login" styleClass="success-btn" action="#{usuarioBean.doLogin()}" ajax="false" update="@form">
                         </p:commandButton>
                     </p:panelGrid>
                     <p:messages autoUpdate="true"></p:messages>
