@@ -71,6 +71,10 @@ https://mvnrepository.com/
 Para ver o sistema rodando, basta acessar o link abaixo: <br>
 https://cadastro-software.herokuapp.com/
 
+- Login:
+	- Email: admin@admin.com
+	- Senha: admin123
+
 ## Licença
 
 Projeto licenciado sob <a href="LICENSE">The MIT License (MIT)</a>.
