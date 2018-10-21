@@ -10,6 +10,13 @@ public class Usuario {
     private String senha;
     private Integer ativo = 1;
 
+    public Usuario() {
+    }
+    
+    public Usuario(String email) {
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }

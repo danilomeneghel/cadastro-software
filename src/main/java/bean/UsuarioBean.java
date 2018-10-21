@@ -61,9 +61,9 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
         }
     }
 
-    public String getUsuarioLogado() {
+    public Usuario getUsuarioLogado() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        String usuarioLogado = (String) session.getAttribute("email");
+        Usuario usuarioLogado = (Usuario) session.getAttribute("email");
         
         System.out.println("Return usuario Logado " + usuarioLogado);
         

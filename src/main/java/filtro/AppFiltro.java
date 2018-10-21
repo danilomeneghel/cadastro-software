@@ -1,4 +1,4 @@
-package filter;
+package filtro;
 
 import entidade.Usuario;
 import java.io.IOException;
@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "AppFilter", urlPatterns = {"/app/*"})
-public class AppFilter implements Filter {
+@WebFilter(filterName = "AppFiltro", urlPatterns = {"/app/*"})
+public class AppFiltro implements Filter {
 
-    public AppFilter() {
+    public AppFiltro() {
     }
 
     @Override
