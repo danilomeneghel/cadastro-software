@@ -16,7 +16,8 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
 
     private UsuarioDAO usuarioDAO;
     private Usuario usuario;
-
+    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+    
     public UsuarioBean() {
         usuario = new Usuario();
     }
@@ -45,12 +46,8 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
     public String doLogin() throws ErroSistema {
         Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
         switch (valida) {
-            case 1:
-                HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            case 1:                
                 session.setAttribute("usuario", usuario);
-
-                System.out.println("Usuario " + session.getAttribute("usuario"));
-
                 return "/app/index?faces-redirect=true";
             case 0:
                 adicionarMensagem("Usuário inativo!", FacesMessage.SEVERITY_INFO);
@@ -62,15 +59,11 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
     }
 
     public Usuario getUsuarioLogado() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        System.out.println("Return usuario Logado " + session.getAttribute("usuario"));
-        
-        return (Usuario) session.getAttribute("usuario");        
+        return (Usuario) session.getAttribute("usuario");
     }
 
     public String doLogout() {
-        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.invalidate();
-        return "/login/login.jsf";
+        return "/login/login?faces-redirect=true";
     }
 }

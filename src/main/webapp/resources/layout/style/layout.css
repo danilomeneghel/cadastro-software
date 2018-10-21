@@ -14,6 +14,11 @@ body.layout-scroll-block {
 .ui-panelgrid .ui-panelgrid-cell {
     border: none !important;
 }
+.logout-btn {
+    background-color: #eee !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+}
 thead {
     height: 45px;
     background-color: #eee;

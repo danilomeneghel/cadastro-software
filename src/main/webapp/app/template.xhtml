@@ -23,10 +23,12 @@
                 <div class="layout-topbar-content">
                     <h:form>
                         <p:menubar>
-                            <p:menuitem value="Home" url="index.jsf"></p:menuitem>
-                            <p:menuitem value="Softwares" url="gerenciar-software.jsf"></p:menuitem>
-                            <p:menuitem value="Usuários" url="gerenciar-usuario.jsf"></p:menuitem>
-                            <p:menuitem value="Sair" url="#{usuarioBean.doLogout()}"></p:menuitem>
+                            <p:menuitem value="Home" icon="ui-icon-home" url="index.jsf" />
+                            <p:menuitem value="Softwares" icon="ui-icon-document" url="gerenciar-software.jsf" />
+                            <p:menuitem value="Usuários" icon="ui-icon-document" url="gerenciar-usuario.jsf" />
+                            <f:facet name="options">
+                                <p:commandButton value="Logout" icon="fa fa-sign-out" styleClass="logout-btn" action="#{usuarioBean.doLogout()}" />
+                            </f:facet>
                         </p:menubar>
                     </h:form>
                 </div>

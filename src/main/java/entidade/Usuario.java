@@ -4,21 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Usuario implements Serializable {
-
-    public static final long serialVersionUID = 1L;
     
     private Integer id;
     private String nome;
     private String email;
     private String senha;
     private Integer ativo = 1;
-
-    public Usuario() {
-    }
-    
-    public Usuario(String email) {
-        this.email = email;
-    }
 
     public Integer getId() {
         return id;
@@ -76,10 +67,7 @@ public class Usuario implements Serializable {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 
 }
