@@ -86,4 +86,20 @@ public class UsuarioDAO implements CrudDAO<Usuario> {
         return -1;
     }
 
+    public String getNomeUsuario(String email) throws ErroSistema {
+        try {
+            Connection conexao = ConexaoDB.getConexao();
+            PreparedStatement ps = conexao.prepareStatement("SELECT nome FROM usuario WHERE email = ?");
+            ps.setString(1, email);
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getString("nome");
+            } 
+        } catch (SQLException ex) {
+            throw new ErroSistema("Erro ao localizar usuário!", ex);
+        }
+        return null;
+    }
+
 }

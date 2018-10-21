@@ -17,7 +17,7 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
     private UsuarioDAO usuarioDAO;
     private Usuario usuario;
     private HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-    
+
     public UsuarioBean() {
         usuario = new Usuario();
     }
@@ -44,22 +44,26 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
     }
 
     public String doLogin() throws ErroSistema {
-        Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
-        switch (valida) {
-            case 1:                
-                session.setAttribute("usuario", usuario);
-                return "/app/index?faces-redirect=true";
-            case 0:
-                adicionarMensagem("Usuário inativo!", FacesMessage.SEVERITY_INFO);
-                return null;
-            default:
-                adicionarMensagem("Usuário ou senha inválido!", FacesMessage.SEVERITY_INFO);
-                return null;
+        if (usuario.getEmail() != null) {
+            Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
+            switch (valida) {
+                case 1:
+                    session.setAttribute("email", (String) usuario.getEmail());
+                    session.setAttribute("nome", (String) getDao().getNomeUsuario(usuario.getEmail()));
+                    return "/app/index?faces-redirect=true";
+                case 0:
+                    adicionarMensagem("Usuário inativo!", FacesMessage.SEVERITY_INFO);
+                    return null;
+                default:
+                    adicionarMensagem("Usuário ou senha inválido!", FacesMessage.SEVERITY_INFO);
+                    return null;
+            }
         }
+        return null;
     }
 
-    public Usuario getUsuarioLogado() {
-        return (Usuario) session.getAttribute("usuario");
+    public String getUsuarioLogado() {
+        return (String) session.getAttribute("nome");
     }
 
     public String doLogout() {

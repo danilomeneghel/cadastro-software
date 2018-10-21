@@ -32,8 +32,11 @@ public class AppFiltro implements Filter {
             HttpServletResponse res = (HttpServletResponse) response;
             HttpSession ses = (HttpSession) req.getSession();
 
-            Usuario usuario = (Usuario) ses.getAttribute("usuario");
-            
+            Usuario usuario = null;
+            if (ses != null) {
+                usuario = (Usuario) ses.getAttribute("email");
+            }
+
             if (usuario == null) {
                 res.sendRedirect(req.getContextPath() + "/login/login.jsf");
             } else {
