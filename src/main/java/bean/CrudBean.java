@@ -2,13 +2,14 @@ package bean;
 
 import dao.CrudDAO;
 import alertas.ErroSistema;
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-public abstract class CrudBean<E, D extends CrudDAO> {
+public abstract class CrudBean<E, D extends CrudDAO> implements Serializable {
 
     private String estadoTela = "listar";
 

@@ -3,17 +3,23 @@ package bean;
 import alertas.ErroSistema;
 import dao.UsuarioDAO;
 import entidade.Usuario;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-@ManagedBean
+@ManagedBean(name = "usuarioBean")
 @SessionScoped
-public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> {
+public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serializable {
 
     private UsuarioDAO usuarioDAO;
-    private Usuario usuario = new Usuario();
+    private Usuario usuario;
+
+    public UsuarioBean() {
+        usuario = new Usuario();
+    }
 
     @Override
     public UsuarioDAO getDao() {
@@ -40,10 +46,12 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> {
         Integer valida = getDao().login(usuario.getEmail(), usuario.getSenha());
         switch (valida) {
             case 1:
-                HttpSession session = SessionBean.getSession();
+                HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
                 session.setAttribute("email", usuario.getEmail());
-                session.setAttribute("nome", usuario.getNome());
-                return "index";
+
+                System.out.println("Email " + session.getAttribute("email"));
+
+                return "/app/index?faces-redirect=true";
             case 0:
                 adicionarMensagem("Usuário inativo!", FacesMessage.SEVERITY_INFO);
                 return null;
@@ -53,15 +61,18 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> {
         }
     }
 
-    public String getNomeUsuario() {
-        HttpSession session = SessionBean.getSession();
-        String nome = (String) session.getAttribute("nome");
-        return nome;
+    public String getUsuarioLogado() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        String usuarioLogado = (String) session.getAttribute("email");
+        
+        System.out.println("Return usuario Logado " + usuarioLogado);
+        
+        return usuarioLogado;
     }
 
     public String logout() {
-        HttpSession session = SessionBean.getSession();
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
         session.invalidate();
-        return "/";
+        return "/login/login.jsf";
     }
 }

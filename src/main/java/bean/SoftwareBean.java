@@ -5,14 +5,14 @@ import entidade.Software;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@ManagedBean(name = "softwareBean")
 @SessionScoped
 public class SoftwareBean extends CrudBean<Software, SoftwareDAO> {
 
     private SoftwareDAO softwareDAO;
-    
+
     public SoftwareDAO getDao() {
-        if(softwareDAO == null){
+        if (softwareDAO == null) {
             softwareDAO = new SoftwareDAO();
         }
         return softwareDAO;
