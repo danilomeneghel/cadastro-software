@@ -6,6 +6,9 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 
 - CRUD
 - Bean
+- DAO
+- Entidade
+- Filtro
 - DataTables
 - Login
 
