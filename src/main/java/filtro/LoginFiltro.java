@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "AppFiltro", urlPatterns = {"/app/*"})
-public class AppFiltro implements Filter {
+@WebFilter(filterName = "LoginFiltro", urlPatterns = {"/login/index.jsf"})
+public class LoginFiltro implements Filter {
 
-    public AppFiltro() {
+    public LoginFiltro() {
     }
 
     @Override
@@ -38,9 +38,9 @@ public class AppFiltro implements Filter {
             }
 
             if (usuario == null) {
-                res.sendRedirect(req.getContextPath() + "/login/index.jsf");
-            } else {
                 chain.doFilter(request, response);
+            } else {
+                res.sendRedirect(req.getContextPath() + "/app/index.jsf");
             }
         } catch (IOException | ServletException e) {
             System.out.println(e.getMessage());

@@ -68,6 +68,6 @@ public class UsuarioBean extends CrudBean<Usuario, UsuarioDAO> implements Serial
 
     public String doLogout() {
         session.invalidate();
-        return "/login/login?faces-redirect=true";
+        return "/login/index?faces-redirect=true";
     }
 }
