@@ -51,7 +51,7 @@ public class SoftwareDAO implements CrudDAO<Software>{
     public List<Software> listar() throws ErroSistema{
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM software");
+            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM software ORDER BY nome");
             ResultSet resultSet = ps.executeQuery();
             List<Software> softwares = new ArrayList<>();
             while(resultSet.next()){

@@ -50,7 +50,7 @@ public class UsuarioDAO implements CrudDAO<Usuario> {
     public List<Usuario> listar() throws ErroSistema {
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM usuario");
+            PreparedStatement ps = conexao.prepareStatement("SELECT * FROM usuario ORDER BY nome");
             ResultSet resultSet = ps.executeQuery();
             List<Usuario> usuarios = new ArrayList<>();
             while (resultSet.next()) {

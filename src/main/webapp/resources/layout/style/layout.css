@@ -134,9 +134,22 @@ fieldset {
     color: #343C41 !important;
     border: 1px solid #000 !important;
 }
+.ui-messages-info, .ui-message-info {
+    border-color: #7CA5EC !important;
+}
 thead {
     height: 45px;
     background-color: #eee;
+}
+#ui-datepicker-div {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;    
+}
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    margin-left: -18px !important;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    width: 2.8em !important;
 }
 .layout-wrapper .layout-topbar {
     background: #343c41;
