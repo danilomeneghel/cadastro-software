@@ -25,6 +25,10 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erro/index.jsf</location>
+    </error-page>
     <session-config>
         <session-timeout>
             60
