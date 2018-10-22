@@ -47,6 +47,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .box-login {
     box-shadow: 1px 3px 12px #50575b;    
 }
+input:focus {
+  box-shadow: 1px 1px 5px #707577 !important;
+  border: 1px solid #707577 !important;
+}
 .title-login {
     text-align: center;
     padding-bottom: 6px;
