@@ -35,7 +35,7 @@
                                     <p:password id="senha" value="#{usuarioBean.usuario.senha}" styleClass="form-control input-login" required="true" placeholder="Senha" label="Senha" />
                                 </div>
                             </p:panelGrid>
-                            <p:commandButton value="Login" styleClass="login-btn btn-lg btn-block" action="#{usuarioBean.doLogin()}" ajax="false" update="@form" />
+                            <p:commandButton value="Login" styleClass="btn-login btn-lg btn-block" action="#{usuarioBean.doLogin()}" ajax="false" update="@form" />
                             <p:messages autoUpdate="true"></p:messages>
                         </h:form>
                     </div>
