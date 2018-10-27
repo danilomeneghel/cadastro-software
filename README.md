@@ -11,6 +11,7 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 - Filtro
 - DataTables
 - Login
+- Responsivo
 
 ## Requisitos
 
