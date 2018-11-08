@@ -79,7 +79,7 @@ public class UsuarioDAO implements CrudDAO<Usuario> {
 
             if (resultSet.next()) {
                 return resultSet.getInt("ativo");
-            } 
+            }
         } catch (SQLException ex) {
             throw new ErroSistema("Erro ao localizar usuário!", ex);
         }
@@ -95,7 +95,7 @@ public class UsuarioDAO implements CrudDAO<Usuario> {
 
             if (resultSet.next()) {
                 return resultSet.getString("nome");
-            } 
+            }
         } catch (SQLException ex) {
             throw new ErroSistema("Erro ao localizar usuário!", ex);
         }

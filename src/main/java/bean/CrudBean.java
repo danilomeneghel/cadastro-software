@@ -14,7 +14,7 @@ public abstract class CrudBean<E, D extends CrudDAO> {
 
     public E entidade;
     public List<E> entidades;
-    
+
     public void novo() {
         entidade = criarNovaEntidade();
         mudarParaInseri();

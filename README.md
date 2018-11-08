@@ -5,8 +5,10 @@ Projeto de cadastro de Software desenvolvido com Java Web, JSF e Maven.
 ## Características
 
 - CRUD
-- Bean
+- Design Patterns
+- Interface
 - DAO
+- Bean
 - Entidade
 - Filtro
 - DataTables

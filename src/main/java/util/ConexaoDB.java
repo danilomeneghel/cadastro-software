@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoDB {
-    
+
     private static Connection conexao;
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql://stampy.db.elephantsql.com:5432/elrbhidx";
@@ -14,7 +14,7 @@ public class ConexaoDB {
     private static final String SENHA = "ZSF1ePzz1obj6ZUwBDfaVIa9uTetotS-";
 
     public static Connection getConexao() throws ErroSistema {
-        if(conexao == null){
+        if (conexao == null) {
             try {
                 Class.forName(DRIVER);
                 conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
@@ -26,9 +26,9 @@ public class ConexaoDB {
         }
         return conexao;
     }
-    
-    public static void fecharConexao() throws ErroSistema{
-        if(conexao != null){
+
+    public static void fecharConexao() throws ErroSistema {
+        if (conexao != null) {
             try {
                 conexao.close();
                 conexao = null;
@@ -37,5 +37,5 @@ public class ConexaoDB {
             }
         }
     }
-    
+
 }

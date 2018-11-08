@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Usuario implements Serializable {
-    
+
     private Integer id;
     private String nome;
     private String email;

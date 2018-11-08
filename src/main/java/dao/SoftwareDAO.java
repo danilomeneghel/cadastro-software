@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-public class SoftwareDAO implements CrudDAO<Software>{
-    
+public class SoftwareDAO implements CrudDAO<Software> {
+
     @Override
-    public void salvar(Software software) throws ErroSistema{
+    public void salvar(Software software) throws ErroSistema {
         try {
             Connection conexao = ConexaoDB.getConexao();
             PreparedStatement ps;
-            if(software.getId() == null){
+            if (software.getId() == null) {
                 ps = conexao.prepareStatement("INSERT INTO software (nome, desenvolvedor, tipo, data_cadastro) VALUES (?,?,?,?)");
             } else {
                 ps = conexao.prepareStatement("UPDATE software SET nome=?, desenvolvedor=?, tipo=?, data_cadastro=? WHERE id=?");
@@ -34,27 +34,27 @@ public class SoftwareDAO implements CrudDAO<Software>{
             throw new ErroSistema("Erro ao tentar salvar!", ex);
         }
     }
-    
+
     @Override
-    public void excluir(Software software) throws ErroSistema{
+    public void excluir(Software software) throws ErroSistema {
         try {
             Connection conexao = ConexaoDB.getConexao();
-            PreparedStatement ps  = conexao.prepareStatement("DELETE FROM software WHERE id = ?");
+            PreparedStatement ps = conexao.prepareStatement("DELETE FROM software WHERE id = ?");
             ps.setInt(1, software.getId());
             ps.execute();
         } catch (SQLException ex) {
             throw new ErroSistema("Erro ao excluir!", ex);
         }
     }
-    
+
     @Override
-    public List<Software> listar() throws ErroSistema{
+    public List<Software> listar() throws ErroSistema {
         try {
             Connection conexao = ConexaoDB.getConexao();
             PreparedStatement ps = conexao.prepareStatement("SELECT * FROM software ORDER BY nome");
             ResultSet resultSet = ps.executeQuery();
             List<Software> softwares = new ArrayList<>();
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Software software = new Software();
                 software.setId(resultSet.getInt("id"));
                 software.setNome(resultSet.getString("nome"));
@@ -65,9 +65,9 @@ public class SoftwareDAO implements CrudDAO<Software>{
             }
             ConexaoDB.fecharConexao();
             return softwares;
-            
+
         } catch (SQLException ex) {
-            throw new ErroSistema("Erro ao listar!",ex);
+            throw new ErroSistema("Erro ao listar!", ex);
         }
     }
 }
